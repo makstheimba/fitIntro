@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
   devServer: {
     inline: true,
     port: 8000,
-    contentBase: './src',
+    contentBase: './dist',
     historyApiFallback: true,
   },
   module: {
@@ -74,4 +75,11 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Quick gym',
+      template: './src/index.html',
+      filename: 'dist/index.html',
+    }),
+  ],
 };
